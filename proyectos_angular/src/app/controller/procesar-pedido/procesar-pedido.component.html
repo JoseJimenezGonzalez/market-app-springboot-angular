@@ -1,0 +1,56 @@
+<div class="container">
+    <br><br>
+      <div class="form-control">
+          <label class="col-sm-2 h4" >Seleccione categoría: </label>
+          <select id="sel1" class="form-select form-control-lg" [(ngModel)]="idCategoriaSeleccionada" (change)="productosPorCategoria()">
+            <option *ngFor="let c of categorias" value="{{c.idCategoria}}">{{c.categoria}}</option>
+          </select>
+      </div>
+      <div>
+        <br><br>
+        <h1>Listado de productos</h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio unitario</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Unidades</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of productos">
+                <td>{{p.nombre}}</td>
+                <td>{{p.precioUnitario}}</td>
+                <td>{{p.stock}}</td>
+                <td><input type="text" class="form-control" [(ngModel)]="p.unidades"></td>
+                <td><input type="button" class="form-control" value="Agregar cesta" (click)="agregarProductoCesta(p)"></td>
+            </tr>
+          </tbody>
+        </table>
+        <br><br>
+        <h1>Cesta de productos</h1>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Unidades</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of cesta; index as i">
+                <td>{{c.producto.nombre}}</td>
+                <td>{{c.unidades}}</td>
+                <td><input type="button" class="form-control" value="Eliminar de la cesta" (click)="eliminarProductoCesta(i)"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group">
+          <br>
+          <input type="button" (click)="procesarPedido()" class="btn btn-info btn-md" value="Procesar pedido"><br>
+        </div>
+      </div>
+  </div>
+  
