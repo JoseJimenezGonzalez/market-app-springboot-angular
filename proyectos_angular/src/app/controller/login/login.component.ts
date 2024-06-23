@@ -21,17 +21,14 @@ export class LoginComponent {
   login(){
     this.loginService.login(this.usuario, this.password).pipe(
       catchError(error => {
-        // Si el login falla, el backend debería devolver un error.
-        // Aquí puedes manejar ese error.
         if (error.status === 401) {
           alert("Usuario no autenticado");
         } else {
           alert("Ocurrió un error durante el login");
         }
-        return of(null); // Devuelve un observable para mantener la cadena.
+        return of(null);
       })
     ).subscribe(data => {
-      // Si el login es exitoso, el backend debería devolver los datos del cliente.
       if (data) {
         this.cliente = data;
         this.menuComponent.cliente = this.cliente;

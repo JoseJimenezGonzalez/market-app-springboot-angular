@@ -21,13 +21,10 @@ import { MenuComponent } from './controller/menu/menu.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //Este modulo es muy importante
     HttpClientModule,
-    //Directiva para el formulario
     FormsModule
   ],
   providers: [],
-  //Aqui le decimos donde empieza
   bootstrap: [MenuComponent]
 })
 export class AppModule { }

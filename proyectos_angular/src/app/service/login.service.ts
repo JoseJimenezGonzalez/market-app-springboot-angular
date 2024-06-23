@@ -15,7 +15,6 @@ export class LoginService {
     let params = new HttpParams();
     params = params.append("usuario", usuario);
     params = params.append("password", password);
-    //Nos devuelve un observable
     return this.http.get(url, {params: params});
 
   }
